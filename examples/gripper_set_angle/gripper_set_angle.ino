@@ -45,9 +45,8 @@ void setup(){
 
 void loop(){
     softSerial.println("Gripper Close\n"); // 打印日志
-    gripper.setAngle(SERVO_ANGLE_GRIPPER_CLOSE, interval, power);
-    // TODO 在5s内是否掉落
+    gripper.setAngle(SERVO_ANGLE_GRIPPER_CLOSE, GRIPPER_INTERVAL_MS, GRIPPER_MAX_POWER);
     delay(10000); // 等待1s
     softSerial.println("Gripper Open\n"); // 打印日志
-    gripper.setAngle(SERVO_ANGLE_GRIPPER_OPEN, interval, power);
+    gripper.setAngle(SERVO_ANGLE_GRIPPER_OPEN, GRIPPER_INTERVAL_MS, GRIPPER_MAX_POWER);
 }
