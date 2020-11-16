@@ -7,7 +7,7 @@
  */
  
 #include <SoftwareSerial.h>
-#include "FashionStar_UartServoProtocal.h"  // 串口总线舵机通信协议
+#include "FashionStar_UartServoProtocol.h"  // 串口总线舵机通信协议
 #include "FashionStar_UartServo.h"          // Fashion Star串口总线舵机
 #include "FashionStar_SmartGripper.h"       // Fashion Star智能夹具
 
@@ -29,9 +29,9 @@
 // 软串口初始化
 SoftwareSerial softSerial(SOFT_SERIAL_RX, SOFT_SERIAL_TX); // 创建软串口
 // 创建舵机的通信协议对象
-FSUS_Protocal protocal(BAUDRATE);
+FSUS_Protocol protocol(BAUDRATE);
 // 创建舵机的实例
-FSUS_Servo uservo(SERVO_ID, &protocal);
+FSUS_Servo uservo(SERVO_ID, &protocol);
 // 创建智能机械爪实例
 FSGP_Gripper gripper(&uservo, SERVO_ANGLE_GRIPPER_OPEN,SERVO_ANGLE_GRIPPER_CLOSE);
 
@@ -39,7 +39,7 @@ void setup(){
     softSerial.begin(SOFT_SERIAL_BAUDRATE); // 软串口
     softSerial.println("Start To Test Gripper\n"); // 打印日志
     
-    protocal.init();    // 舵机通信协议初始化    
+    protocol.init();    // 舵机通信协议初始化    
     gripper.init();     // 爪子初始化
 }
 
